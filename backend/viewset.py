@@ -74,7 +74,7 @@ class Producto_ViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     serializer_class = Producto_Serializers
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['restaurante__id']
+    filterset_fields = ['restaurante__id', 'id']
 
 
 class Medio_Pago_ViewSet(viewsets.ModelViewSet):
