@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Region,Comuna,User,Delivery,Cliente,Restaurante,Direcciones,Producto,Medio_Pago,Pedido,Detalle_Pago,Detalle_Pedido,Facturado,Facturacion_mensual
+from .models import Region, Comuna, User, Delivery, Cliente, Restaurante, Direcciones, Producto, Medio_Pago, Pedido, Detalle_Pago, Detalle_Pedido, Facturado, Facturacion_mensual
 
 
 # serializars from models import from api rappidos
@@ -34,7 +34,24 @@ class Comuna_Serializers(serializers.ModelSerializer):
 class User_Serializers(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ('email', 'password', 'tipo', 'is_active')
+
+    def create(self, validated_data):
+        user = User.objects.create(
+            email=validated_data['email'],
+            password=validated_data['password'],
+            tipo=validated_data['tipo'],
+            is_active=validated_data['is_active']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        update_user = super().update(instance, validated_data)
+        update_user.set_password(validated_data['password'])
+        update_user.save()
+        return update_user
 
         # overwrite method view endpoints
 
@@ -185,4 +202,3 @@ class Facturacion_mensual_Serializers(serializers.ModelSerializer):
         #     return {
 
         #     }
-

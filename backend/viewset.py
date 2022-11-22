@@ -1,8 +1,9 @@
 from rest_framework import viewsets, permissions
-from .models import Region,Comuna,User,Delivery,Cliente,Restaurante,Direcciones,Producto,Medio_Pago,Pedido,Detalle_Pago,Detalle_Pedido,Facturado,Facturacion_mensual
-from .serializers import Region_Serializers,Comuna_Serializers,User_Serializers,Delivery_Serializers,Cliente_Serializers,Restaurante_Serializers,Direcciones_Serializers,Producto_Serializers,Medio_Pago_Serializers,Pedido_Serializers,Detalle_Pago_Serializers,Detalle_Pedido_Serializers,Facturado_Serializers,Facturacion_mensual_Serializers
+from .models import Region, Comuna, User, Delivery, Cliente, Restaurante, Direcciones, Producto, Medio_Pago, Pedido, Detalle_Pago, Detalle_Pedido, Facturado, Facturacion_mensual
+from .serializers import Region_Serializers, Comuna_Serializers, User_Serializers, Delivery_Serializers, Cliente_Serializers, Restaurante_Serializers, Direcciones_Serializers, Producto_Serializers, Medio_Pago_Serializers, Pedido_Serializers, Detalle_Pago_Serializers, Detalle_Pedido_Serializers, Facturado_Serializers, Facturacion_mensual_Serializers
 from rappidos import settings
 from django_filters.rest_framework import DjangoFilterBackend
+
 
 class Region_ViewSet(viewsets.ModelViewSet):
 
@@ -12,6 +13,7 @@ class Region_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Comuna_ViewSet(viewsets.ModelViewSet):
 
     queryset = Comuna.objects.all()
@@ -19,6 +21,7 @@ class Comuna_ViewSet(viewsets.ModelViewSet):
     serializer_class = Comuna_Serializers
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
+
 
 class User_ViewSet(viewsets.ModelViewSet):
 
@@ -28,6 +31,7 @@ class User_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Delivery_ViewSet(viewsets.ModelViewSet):
 
     queryset = Delivery.objects.all()
@@ -35,6 +39,7 @@ class Delivery_ViewSet(viewsets.ModelViewSet):
     serializer_class = Delivery_Serializers
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
+
 
 class Cliente_ViewSet(viewsets.ModelViewSet):
 
@@ -44,6 +49,7 @@ class Cliente_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Restaurante_ViewSet(viewsets.ModelViewSet):
 
     queryset = Restaurante.objects.all()
@@ -51,6 +57,7 @@ class Restaurante_ViewSet(viewsets.ModelViewSet):
     serializer_class = Restaurante_Serializers
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
+
 
 class Direcciones_ViewSet(viewsets.ModelViewSet):
 
@@ -60,13 +67,15 @@ class Direcciones_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Producto_ViewSet(viewsets.ModelViewSet):
 
     queryset = Producto.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = Producto_Serializers
-    #filter_backends [DjangoFilterBackend]
-    #filterset_fields = ['algo']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['restaurante__id']
+
 
 class Medio_Pago_ViewSet(viewsets.ModelViewSet):
 
@@ -76,6 +85,7 @@ class Medio_Pago_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Pedido_ViewSet(viewsets.ModelViewSet):
 
     queryset = Pedido.objects.all()
@@ -83,6 +93,7 @@ class Pedido_ViewSet(viewsets.ModelViewSet):
     serializer_class = Pedido_Serializers
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
+
 
 class Detalle_Pago_ViewSet(viewsets.ModelViewSet):
 
@@ -92,6 +103,7 @@ class Detalle_Pago_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Detalle_Pedido_ViewSet(viewsets.ModelViewSet):
 
     queryset = Detalle_Pedido.objects.all()
@@ -100,6 +112,7 @@ class Detalle_Pedido_ViewSet(viewsets.ModelViewSet):
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
 
+
 class Facturado_ViewSet(viewsets.ModelViewSet):
 
     queryset = Facturado.objects.all()
@@ -107,6 +120,7 @@ class Facturado_ViewSet(viewsets.ModelViewSet):
     serializer_class = Facturado_Serializers
     #filter_backends [DjangoFilterBackend]
     #filterset_fields = ['algo']
+
 
 class Facturacion_mensual_ViewSet(viewsets.ModelViewSet):
 
