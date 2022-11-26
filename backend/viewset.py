@@ -91,8 +91,31 @@ class Pedido_ViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = Pedido_Serializers
-    #filter_backends [DjangoFilterBackend]
-    #filterset_fields = ['algo']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['restaurante__id', 'estado']
+
+
+class Pedido_Restaurant_ViewSet(viewsets.ModelViewSet):
+
+    queryset = Pedido.objects.filter(estado__in=[
+        "porConfirmar",
+        "enPreparacion",
+        "enEspera"])
+    permission_classes = [permissions.AllowAny]
+    serializer_class = Pedido_Serializers
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['restaurante__id']
+
+
+class Pedido_Delivery_ViewSet(viewsets.ModelViewSet):
+
+    queryset = Pedido.objects.filter(estado__in=[
+        "enCamino", "pagado",
+        "enEspera"])
+    permission_classes = [permissions.AllowAny]
+    serializer_class = Pedido_Serializers
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['restaurante__id']
 
 
 class Detalle_Pago_ViewSet(viewsets.ModelViewSet):
@@ -109,8 +132,8 @@ class Detalle_Pedido_ViewSet(viewsets.ModelViewSet):
     queryset = Detalle_Pedido.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = Detalle_Pedido_Serializers
-    #filter_backends [DjangoFilterBackend]
-    #filterset_fields = ['algo']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['pedido__id']
 
 
 class Facturado_ViewSet(viewsets.ModelViewSet):

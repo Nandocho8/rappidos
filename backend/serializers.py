@@ -149,8 +149,6 @@ class Pedido_Serializers(serializers.ModelSerializer):
         # def to_representation(self,instance):
         #     return {
 
-        #     }
-
 
 class Detalle_Pago_Serializers(serializers.ModelSerializer):
     class Meta:
@@ -172,10 +170,16 @@ class Detalle_Pedido_Serializers(serializers.ModelSerializer):
 
         # overwrite method view endpoints
 
-        # def to_representation(self,instance):
-        #     return {
-
-        #     }
+    def to_representation(self, instance):
+        return {
+            'id': instance.id,
+            'id_pedido': instance.pedido.id,
+            'id_producto': instance.producto.id,
+            'nombre_producto': instance.producto.nombre_producto,
+            'precio_venta': instance.producto.precio_venta_producto,
+            'descripcion_producto': instance.producto.descripcion_producto,
+            'imagen_producto': instance.producto.imagen_producto
+        }
 
 
 class Facturado_Serializers(serializers.ModelSerializer):

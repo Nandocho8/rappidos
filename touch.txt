@@ -6,3 +6,9 @@ ALTER USER rappidos QUOTA UNLIMITED ON USERS;
 GRANT CREATE SESSION TO rappidos;
 GRANT "RESOURCE" TO rappidos;
 ALTER USER rappidos DEFAULT ROLE "RESOURCE";
+
+
+insert into backend_user (EMAIL,PASSWORD,TIPO,IS_ACTIVE,is_superuser,is_staff,date_joined) values('a@a.cl','pass','C',1,0,0,sysdate);
+insert into backend_user (EMAIL,PASSWORD,TIPO,IS_ACTIVE,is_superuser,is_staff,date_joined) values('a@a.cl','pass','C',1,0,0,sysdate);
+insert into backend_user (EMAIL,PASSWORD,TIPO,IS_ACTIVE,is_superuser,is_staff,date_joined) values('a@a.cl','pass','C',1,0,0,sysdate);
+
