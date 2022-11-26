@@ -47,7 +47,7 @@ SECRET_KEY = 'django-insecure-+j36hooei8jnkk_a#qq6qy5+b23)t4%drxk4gzdg*i_d5j9%9v
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://rappidos-env.eba-cawywhag.us-east-1.elasticbeanstalk.com/', 'localhost']
+    'http://rappidos-env.eba-cawywhag.us-east-1.elasticbeanstalk.com/', 'localhost','https://rappidosbackend.onrender.com/']
 
 
 # Application definition
