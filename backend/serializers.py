@@ -150,8 +150,8 @@ class Pedido_Serializers(serializers.ModelSerializer):
         return {
             "id": instance.id,
             "estado": instance.estado,
-            "id_restaurante": instance.restaurante.direccion_restaurante,
-            "direccion_restaurante": instance.restaurante.id,
+            "direccion_restaurante": instance.restaurante.direccion_restaurante,
+            "id_restaurante": instance.restaurante.id,
             "id_cliente": instance.cliente.id,
             "nombre_cliente": f'{instance.cliente.nombre_cliente} {instance.cliente.apellidos_cliente}',
             "delivery": instance.delivery.id,
