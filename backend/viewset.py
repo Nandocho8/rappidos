@@ -92,7 +92,7 @@ class Pedido_ViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     serializer_class = Pedido_Serializers
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['restaurante__id', 'estado']
+    filterset_fields = ['restaurante__id', 'estado', 'delivery__id']
 
 
 class Pedido_Restaurant_ViewSet(viewsets.ModelViewSet):
@@ -110,7 +110,7 @@ class Pedido_Restaurant_ViewSet(viewsets.ModelViewSet):
 class Pedido_Delivery_ViewSet(viewsets.ModelViewSet):
 
     queryset = Pedido.objects.filter(estado__in=[
-        "enCamino", "pagado",
+        "deliveryAsignado", "enCamino", "pagado",
         "enEspera"])
     permission_classes = [permissions.AllowAny]
     serializer_class = Pedido_Serializers
