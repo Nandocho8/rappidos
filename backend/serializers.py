@@ -146,17 +146,18 @@ class Pedido_Serializers(serializers.ModelSerializer):
 
         # overwrite method view endpoints
 
-        def to_representation(self, instance):
-            return {
-                "estado": instance.estado,
-                "id_restaurante": instance.restaurante.direccion_restaurante,
-                "direccion_restaurante": instance.restaurante.id,
-                "id_cliente": instance.cliente.id,
-                "nombre_cliente": f'{instance.cliente.nombre_cliente} {instance.cliente.apellidos_cliente}',
-                "delivery": instance.delivery.id,
-                "monto_envio": instance.monto_envio,
-                "monto_total_pedido": instance.monto_total_pedido,
-            }
+    def to_representation(self, instance):
+        return {
+            "id": instance.id,
+            "estado": instance.estado,
+            "id_restaurante": instance.restaurante.direccion_restaurante,
+            "direccion_restaurante": instance.restaurante.id,
+            "id_cliente": instance.cliente.id,
+            "nombre_cliente": f'{instance.cliente.nombre_cliente} {instance.cliente.apellidos_cliente}',
+            "delivery": instance.delivery.id,
+            "monto_envio": instance.monto_envio,
+            "monto_total_pedido": instance.monto_total_pedido,
+        }
 
 
 class Detalle_Pago_Serializers(serializers.ModelSerializer):
