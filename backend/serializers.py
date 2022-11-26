@@ -177,10 +177,6 @@ class Detalle_Pedido_Serializers(serializers.ModelSerializer):
 
         #     }
 
-    def create(self, validated_data):
-        for det in validated_data:
-            detalle = Detalle_Pedido.objects.create()
-
 
 class Facturado_Serializers(serializers.ModelSerializer):
     class Meta:

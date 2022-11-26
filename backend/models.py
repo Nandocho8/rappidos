@@ -140,14 +140,16 @@ class Pedido(models.Model):
     restaurante = models.ForeignKey(to=Restaurante, on_delete=models.CASCADE)
     cliente = models.ForeignKey(to=Cliente, on_delete=models.CASCADE)
     delivery = models.ForeignKey(to=Delivery, on_delete=models.CASCADE)
+    monto_envio = models.IntegerField(
+        "Envio", blank=False, null=False)
+    monto_total_pedido = models.IntegerField(
+        "Total Pedido", blank=False, null=False)
 
 
 class Detalle_Pago(models.Model):
     pedido = models.ForeignKey(to=Pedido, on_delete=models.CASCADE)
     num_transaccion = models.IntegerField(
-        "Numero de transaccion", blank=False, null=False)
-    monto_total_pedido = models.IntegerField(
-        "Total Pedido", blank=False, null=False)
+        "Numero de transaccion",  default=0, blank=False, null=False)
     medio_pago = models.ForeignKey(to=Medio_Pago, on_delete=models.CASCADE)
 
 
